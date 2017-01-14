@@ -6,17 +6,17 @@ char	*ft_strstr(const char *big, const char *little)
 
 	if (!*little)
 	{
-		return (big);
+		return ((char *)big);
 	}
 	while (*big)
 	{
 		i = 0;
-		while (*big[i] == *little[i])
+		while (big[i] == little[i])
 		{
 			i++;
 			if (!little[i])
 			{
-				return (big);
+				return ((char *)big);
 			}
 		}
 		big += i;

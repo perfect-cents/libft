@@ -1,6 +1,8 @@
+#include "libft.h"
+
 char	*strrchr(const char *s, int c)
 {
-	char	*last_instance;
+	const char	*last_instance;
 	
 	last_instance = NULL;
 	c = (char)c;

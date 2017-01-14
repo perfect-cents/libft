@@ -1,6 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+#include "libft.h"
 
 size_t	split_count(char *s, char c)
 {
@@ -31,7 +29,9 @@ char	**ft_strsplit(char const *s, char c)
 	int		i;
 	int		j;
 
-	if ((tab = (char **)malloc(sizeof(*tab) * (split_count(s, c) + 1))) == NULL)
+	if ((tab = (char **)malloc( \
+		sizeof(*tab) * (split_count((char *)s, c) + 1)
+	)) == NULL)
 	{
 		free(tab);
 		return (NULL);
@@ -44,11 +44,11 @@ char	**ft_strsplit(char const *s, char c)
 		}
 		if (*s) {
 			i = 0;
-			while (s[i] && s[i] == c))
+			while (s[i] && s[i] == c)
 			{
 				i++;
 			}
-			tab[j] = ft_strndup(str, i);
+			tab[j] = ft_strndup(s, i);
 			j++;
 			s += i;
 		}

@@ -5,15 +5,15 @@ int	ft_atoi(const char *str)
 
 	res = 0;
 	neg = 0;
-	if (*str == "+" || *str == "-")
+	if (*str == '+' || *str == '-')
 	{
-		if (*str == "-")
+		if (*str == '-')
 		{
 			neg = 1;
 		}
 		str++;
 	}
-	while (*str > "0" && *str < "9")
+	while (*str > '0' && *str < '9')
 	{
 		res *= 10;
 		res += *str - '0';

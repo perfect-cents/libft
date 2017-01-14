@@ -1,21 +1,23 @@
+#include "libft.h"
+
 char	*strnstr(const char *big, const char *little, size_t len)
 {
-	int	i;
+	size_t	i;
 
 	if (!*little)
 	{
-		return (big);
+		return ((char *)big);
 	}
 	i = 0;
 	while (len && *big)
 	{
 		i = 0;
-		while (len && *big[i] == *little[i])
+		while (len && big[i] == little[i])
 		{
 			i++;
 			if (!little[i])
 			{
-				return (big);
+				return ((char *)big);
 			}
 			len--;
 		}

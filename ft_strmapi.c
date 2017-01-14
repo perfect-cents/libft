@@ -9,7 +9,7 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	i = 0;
 	while (*s)
 	{
-		map[i] = f(i, s)
+		map[i] = f(i, *s);
 		s++;
 		i++;
 	}

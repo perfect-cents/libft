@@ -1,3 +1,5 @@
+#include "libft.h"
+
 char	*ft_strtrim(char const *s)
 {
 	int		i;
@@ -14,7 +16,7 @@ char	*ft_strtrim(char const *s)
 		len--;
 	if (len <= 0)
 		len = 0;
-	if (str = ft_strnew(len + 1) == NULL)
+	if ((str = ft_strnew(len + 1)) == NULL)
 		return (NULL);
 	s += i;
 	i = -1;

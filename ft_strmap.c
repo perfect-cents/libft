@@ -2,14 +2,14 @@
 
 char * ft_strmap(char const *s, char (*f)(char))
 {
-	char			*map;
+	char	*map;
 	unsigned int	i;
 
-	map = ft_strnew(ft_strlen(s))
+	map = ft_strnew(ft_strlen(s));
 	i = 0;
 	while (*s)
 	{
-		map[i] = f(s)
+		map[i] = f(*s);
 		s++;
 		i++;
 	}

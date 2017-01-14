@@ -22,9 +22,10 @@ void *ft_memchr(const void *s, int c, size_t n);
 int ft_memcmp(const void *s1, const void *s2, size_t n);
 size_t ft_strlen(const char *s);
 char *ft_strdup(const char *s1);
+char *ft_strndup(const char *s1, size_t n); // Not in it
 char *ft_strcpy(char * dst, const char * src);
 char *ft_strncpy(char * dst, const char * src, size_t len);
-/*size_t ft_strlcpy(char *dst, const char *src, size_t size);*/
+size_t ft_strlcpy(char *dst, const char *src, size_t size); // Not in it...
 char *ft_strcat(char *s1, const char *s2);
 char *ft_strncat(char *s1, const char *s2, size_t n);
 size_t ft_strlcat(char *dst, const char *src, size_t size);
@@ -76,3 +77,5 @@ void ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list* ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 
 #endif
+
+/* Makefile author ft_atoi.c ft_bzero.c ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdigit.c ft_isprint.c ft_lstdel.c ft_lstdelone.c ft_lstnew.c ft_memalloc.c ft_memccpy.c ft_memchr.c ft_memcmp.c ft_memcpy.c ft_memdel.c ft_memmove.c ft_memset.c ft_putchar.c ft_putchar_fd.c ft_putendl.c ft_putendl_fd.c ft_putnbr.c ft_putnbr_fd.c ft_putstr.c ft_putstr_fd.c ft_strcat.c ft_strchr.c ft_strclr.c ft_strcmp.c ft_strcpy.c ft_strdel.c ft_strdup.c ft_strequ.c ft_striter.c ft_striteri.c ft_strjoin.c ft_strlcat.c ft_strlcpy.c ft_strlen.c ft_strmap.c ft_strmapi.c ft_strncat.c ft_strncmp.c ft_strncpy.c ft_strndup.c ft_strnequ.c ft_strnew.c ft_strnstr.c ft_strrchr.c ft_strsplit.c ft_strstr.c ft_strsub.c ft_strtrim.c ft_tolower.c ft_toupper.c libft.h main.c */
