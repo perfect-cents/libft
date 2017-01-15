@@ -1,135 +1,61 @@
 #include "libft.h"
+#include "libft.h"
 
-size_t	split_count(char *s, char c)
+static int		ft_cnt_parts(const char *s, char c)
 {
-	char	flag;
-	size_t	splits;
+	int		cnt;
+	int		in_substring;
 
-	flag = 0;
-	splits = 0;
-	while (*s)
+	in_substring = 0;
+	cnt = 0;
+	while (*s != '\0')
 	{
-		if (flag && *s == c)
+		if (in_substring == 1 && *s == c)
+			in_substring = 0;
+		if (in_substring == 0 && *s != c)
 		{
-			flag = 0;
-		}
-		else if (!flag && *s == c)
-		{
-			flag = 1;
-			splits++;
+			in_substring = 1;
+			cnt++;
 		}
 		s++;
 	}
-	return (splits);
+	return (cnt);
 }
 
-char	**ft_strsplit(char const *s, char c)
+static int		ft_wlen(const char *s, char c)
 {
-	char	**tab = NULL;
-	int		i;
-	int		j;
+	int		len;
 
-	if ((tab = (char **)malloc( \
-		sizeof(*tab) * (split_count((char *)s, c) + 1)
-	)) == NULL)
+	len = 0;
+	while (*s != c && *s != '\0')
 	{
-		free(tab);
-		return (NULL);
+		len++;
+		s++;
 	}
-	j = 0;
-	while (s && s[i]) {
-		while (*s && *s == c)
-		{
+	return (len);
+}
+
+char			**ft_strsplit(char const *s, char c)
+{
+	char	**t;
+	int		nb_word;
+	int		index;
+
+	index = 0;
+	nb_word = ft_cnt_parts((const char *)s, c);
+	t = (char **)malloc(sizeof(*t) * (ft_cnt_parts((const char *)s, c) + 1));
+	if (t == NULL)
+		return (NULL);
+	while (nb_word--)
+	{
+		while (*s == c && *s != '\0')
 			s++;
-		}
-		if (*s) {
-			i = 0;
-			while (s[i] && s[i] == c)
-			{
-				i++;
-			}
-			tab[j] = ft_strndup(s, i);
-			j++;
-			s += i;
-		}
+		t[index] = ft_strsub((const char *)s, 0, ft_wlen((const char *)s, c));
+		if (t[index] == NULL)
+			return (NULL);
+		s = s + ft_wlen(s, c);
+		index++;
 	}
-	tab[j] = NULL;
-	return (tab);
+	t[index] = NULL;
+	return (t);
 }
-/*
-char	**split(char *str, int (*is_splitter)(char)) {
-	char **tab = NULL;
-
-	int splits = 0;
-	int flag = 0;
-	int i = 0;
-
-	while (str[i] != '\0') {
-		if (flag && is_splitter(str[i])) {
-			flag = 0;
-		} else if (!flag && !is_splitter(str[i])) {
-			flag = 1;
-			splits++;
-		}
-		i++;
-	}
-
-	if ((tab = (char **)malloc(sizeof(*tab) * (splits + 1))) == NULL) {
-		return (NULL);
-	}
-
-	i = 0;
-	int j = 0;
-
-	while (str && str[i]) {
-		while (*str && is_splitter(*str)) { str++; }
-
-		if (*str) {
-			while (str[i] && !is_splitter(str[i])) { i++; }
-			tab[j] = strndup(str, i);
-			j++;
-			str += i;
-			i = 0;
-		}
-	}
-	tab[j] = NULL;
-	return (tab);
-}
-
-int splitWS_isspace(char ch) {
-	return (ch == ' ' || ch == '\t' || ch == '\n' \
-			|| ch == '\v' || ch == '\f' || ch == '\r');
-}
-
-int splitNewLine_isnewline(char ch) {
-	return (ch == '\n');
-}
-
-char **splitWS(char *str) {
-	return split(str, &splitWS_isspace);
-}
-
-char **splitNewLine(char *str) {
-	return split(str, &splitNewLine_isnewline);
-}
-
-	void putTable(char **tab) {
-		for (int i = 0; tab[i] != NULL; i++) {
-			printf("%s\n", tab[i]);
-		}
-	}
-
-	int main(int ac, char const *av[]) {
-		if (ac == 2) {
-			char **raw;
-
-			if ((raw = splitWS((char *)av[1])) == NULL) {
-				return (0);
-			} else {
-				putTable(raw);
-			}
-		}
-		return (0);
-	}
-
-*/

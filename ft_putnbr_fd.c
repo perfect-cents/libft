@@ -8,7 +8,7 @@ void	ft_putnbr_fd(int n, int fd)
 		if (n == -2147483648)
 		{
 			ft_putchar_fd('2', fd);
-			n /= 10;
+			n += 2000000000;
 		}
 		n = -n;
 	}

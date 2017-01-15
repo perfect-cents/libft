@@ -1,3 +1,5 @@
+#include "libft.h"
+
 int	ft_atoi(const char *str)
 {
 	int		res;
@@ -5,6 +7,10 @@ int	ft_atoi(const char *str)
 
 	res = 0;
 	neg = 0;
+	while (ft_isspace(*str))
+	{
+		str++;
+	}
 	if (*str == '+' || *str == '-')
 	{
 		if (*str == '-')

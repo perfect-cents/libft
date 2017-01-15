@@ -2,5 +2,5 @@
 
 void	ft_strclr(char *s)
 {
-	bzero(s, ft_strlen(s));
+	ft_bzero(s, ft_strlen(s));
 }

@@ -1,6 +1,6 @@
 #include "libft.h"
 
-char * ft_strmap(char const *s, char (*f)(char))
+char	*ft_strmap(char const *s, char (*f)(char))
 {
 	char	*map;
 	unsigned int	i;
