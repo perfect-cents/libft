@@ -1,25 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_putlst.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bpezeshk <bpezeshk@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bpezeshk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/17 14:09:47 by bpezeshk          #+#    #+#             */
-/*   Updated: 2017/01/19 13:06:35 by bpezeshk         ###   ########.fr       */
+/*   Created: 2017/01/19 00:31:49 by bpezeshk          #+#    #+#             */
+/*   Updated: 2017/01/19 13:03:56 by bpezeshk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memcpy(void *dst, const void *src, size_t n)
+static void	ft_putlst_helper(t_list *lst)
 {
-	unsigned char		*dp;
-	const unsigned char	*sp;
+	if (lst)
+		write(1, lst->content, lst->content_size);
+}
 
-	dp = (unsigned char *)dst;
-	sp = (const unsigned char *)src;
-	while (n--)
-		*dp++ = *sp++;
-	return (dst);
+void		ft_putlst(t_list *lst)
+{
+	ft_lstiter(lst, &ft_putlst_helper);
 }

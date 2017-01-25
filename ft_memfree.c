@@ -1,25 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_memfree.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bpezeshk <bpezeshk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/17 14:09:47 by bpezeshk          #+#    #+#             */
-/*   Updated: 2017/01/19 13:06:35 by bpezeshk         ###   ########.fr       */
+/*   Created: 2017/01/17 14:11:53 by bpezeshk          #+#    #+#             */
+/*   Updated: 2017/01/19 13:12:41 by bpezeshk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memcpy(void *dst, const void *src, size_t n)
+void	*ft_memfree(void *ap)
 {
-	unsigned char		*dp;
-	const unsigned char	*sp;
-
-	dp = (unsigned char *)dst;
-	sp = (const unsigned char *)src;
-	while (n--)
-		*dp++ = *sp++;
-	return (dst);
+	free(ap);
+	ap = NULL;
+	return (ap);
 }

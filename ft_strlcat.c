@@ -1,29 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bpezeshk <bpezeshk@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/01/17 14:11:14 by bpezeshk          #+#    #+#             */
+/*   Updated: 2017/01/19 13:10:38 by bpezeshk         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
-	char		*d = dst;
-	const char	*s = src;
-	size_t		n = size;
-	size_t		dlen;
-	
-	/* Find the end of dst and adjust bytes left but don't go past end */
-	while (n-- != 0 && *d != '\0')
-		d++;
-	dlen = d - dst;
-	n = size - dlen;
-	if (n == 0)
-		return (dlen + strlen(s));
-	while (*s != '\0')
-	{
-		if (n != 1)
-		{
-			*d++ = *s;
-			n--;
-		}
-		s++;
-	}
-	*d = '\0';
+	size_t	i;
 
-	return (dlen + (s - src));  /* count does not include NUL */
+	i = 0;
+	while (dst[i] && i < size)
+		i++;
+	return (i + ft_strlcpy(dst + i, src, size - i));
 }

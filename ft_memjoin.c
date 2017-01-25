@@ -1,25 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_memjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bpezeshk <bpezeshk@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bpezeshk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/17 14:09:47 by bpezeshk          #+#    #+#             */
-/*   Updated: 2017/01/19 13:06:35 by bpezeshk         ###   ########.fr       */
+/*   Created: 2017/01/19 00:31:09 by bpezeshk          #+#    #+#             */
+/*   Updated: 2017/01/19 13:07:09 by bpezeshk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memcpy(void *dst, const void *src, size_t n)
+void	*ft_memjoin(void *dst, size_t dlen, const void *src, size_t slen)
 {
-	unsigned char		*dp;
-	const unsigned char	*sp;
+	void	*mem;
 
-	dp = (unsigned char *)dst;
-	sp = (const unsigned char *)src;
-	while (n--)
-		*dp++ = *sp++;
+	if ((mem = ft_memalloc(dlen + slen)) == NULL)
+		return (NULL);
+	ft_memcpy(mem, dst, dlen);
+	ft_memcpy((void *)((char *)mem + dlen), src, slen);
 	return (dst);
 }

@@ -1,25 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_lstdupone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bpezeshk <bpezeshk@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bpezeshk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/17 14:09:47 by bpezeshk          #+#    #+#             */
-/*   Updated: 2017/01/19 13:06:35 by bpezeshk         ###   ########.fr       */
+/*   Created: 2017/01/19 00:32:38 by bpezeshk          #+#    #+#             */
+/*   Updated: 2017/01/19 13:04:33 by bpezeshk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memcpy(void *dst, const void *src, size_t n)
+t_list	*ft_lstdupone(t_list *lst)
 {
-	unsigned char		*dp;
-	const unsigned char	*sp;
-
-	dp = (unsigned char *)dst;
-	sp = (const unsigned char *)src;
-	while (n--)
-		*dp++ = *sp++;
-	return (dst);
+	return (lst ? ft_lstnew(lst->content, lst->content_size) : NULL);
 }
